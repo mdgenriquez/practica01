@@ -94,6 +94,22 @@ if data is not None:
 
         show_3d(smiles)
         
+# Calcular similitud de Tanimoto
+def get_similar_compounds(query_smiles, df, threshold=0.7):
+    query_mol = Chem.MolFromSmiles(query_smiles)
+    query_fp = FingerprintMols.FingerprintMol(query_mol)
     
+    similarities = []
+    for index, row in df.iterrows():
+        mol = Chem.MolFromSmiles(row["smiles"])
+        if mol:
+            fp = FingerprintMols.FingerprintMol(mol)
+            similarity = DataStructs.FingerprintSimilarity(query_fp, fp)
+            if similarity >= threshold:
+                similarities.append((row["name"], row["smiles"], similarity))
+    
+    return sorted(similarities, key=lambda x: x[2], reverse=True)
+    
+
 else:
     st.warning("El archivo CSV no contiene datos válidos o no está cargado.")
