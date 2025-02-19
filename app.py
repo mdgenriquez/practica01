@@ -3,6 +3,8 @@ import pandas as pd
 from rdkit import Chem
 from rdkit.Chem import Draw
 from rdkit.Chem import AllChem
+from rdkit.Chem import DataStructs
+from rdkit.Chem.Fingerprints import FingerprintMols
 import py3Dmol
 from stmol import showmol
 from io import BytesIO
