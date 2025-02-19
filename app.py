@@ -109,6 +109,22 @@ def get_similar_compounds(query_smiles, df, threshold=0.7):
                 similarities.append((row["name"], row["smiles"], similarity))
     
     return sorted(similarities, key=lambda x: x[2], reverse=True)
+
+# Interfaz en Streamlit
+st.title("Buscador de Compuestos Similares")
+
+df = load_data()
+query_smiles = st.text_input("Introduce un SMILES para buscar compuestos similares:")
+
+if query_smiles:
+    similares = get_similar_compounds(query_smiles, df)
+    if similares:
+        st.write("Compuestos similares encontrados:")
+        for name, smiles, sim in similares:
+            st.write(f"**{name}** (SMILES: {smiles}, Similitud: {sim:.2f})")
+    else:
+        st.write("No se encontraron compuestos similares.")
+
     
 
 else:
