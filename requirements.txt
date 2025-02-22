@@ -8,3 +8,9 @@ ipywidgets(==7.6.3)
 ipython_genutils
 stmol==0.0.7
 rdkit
+pandas
+scikit-learn
+joblib
+padelpy==0.1.16
+padel-pywrapper==1.0.0
+lightgbm
