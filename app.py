@@ -10,6 +10,12 @@ from stmol import showmol
 from io import BytesIO
 from pubchempy import get_compounds
 import pubchempy as pcp
+from padelpy import from_smiles
+# from PaDEL_pywrapper import PaDEL
+# from PaDEL_pywrapper import descriptors
+import numpy as np
+import pickle
+import joblib
 
 # Configuración de la barra lateral
 st.sidebar.image("plant.jpg")
